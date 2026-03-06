@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>School Reunion Iftar Party — Batch 2023</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --emerald: #0d5c45;
+    --emerald-light: #137a5c;
+    --gold: #c9972a;
+    --gold-light: #e8b84b;
+    --gold-pale: #f5dfa0;
+    --cream: #fdf6e3;
+    --deep: #091f17;
+    --teal: #0a4a38;
+    --text-dark: #1a1a1a;
+    --text-muted: #5a6a60;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Hind Siliguri', 'Lato', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── LANGUAGE TOGGLE ── */
+  .lang-toggle {
+    position: fixed; top: 18px; right: 20px; z-index: 1000;
+    display: flex; gap: 6px;
+  }
+  .lang-btn {
+    padding: 6px 16px; border-radius: 20px; border: 2px solid var(--gold);
+    background: transparent; color: var(--gold); font-family: 'Hind Siliguri', sans-serif;
+    font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all .25s;
+  }
+  .lang-btn.active { background: var(--gold); color: #fff; }
+  .lang-btn:hover:not(.active) { background: rgba(201,151,42,.15); }
+
+  /* ── LANGUAGE VISIBILITY ── */
+  .bn { display: block; }
+  .en { display: none; }
+  body.lang-en .bn { display: none; }
+  body.lang-en .en { display: block; }
+  span.bn, span.en { display: inline; }
+  body.lang-en span.bn { display: none; }
+  body.lang-en span.en { display: inline; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 900;
+    background: rgba(9,31,23,.92); backdrop-filter: blur(10px);
+    padding: 14px 32px; display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(201,151,42,.3);
+  }
+  .nav-brand { color: var(--gold-light); font-family: 'Cinzel Decorative', serif; font-size: 1rem; }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a {
+    color: rgba(255,255,255,.8); text-decoration: none; font-size: 0.88rem;
+    font-weight: 500; transition: color .2s; font-family: 'Hind Siliguri', sans-serif;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(13,92,69,.6) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 30%, rgba(201,151,42,.18) 0%, transparent 50%),
+      linear-gradient(160deg, #091f17 0%, #0d3d2c 40%, #0a4a38 70%, #113d2a 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 100px 24px 60px; position: relative; overflow: hidden;
+  }
+
+  /* Stars */
+  .stars {
+    position: absolute; inset: 0; pointer-events: none;
+  }
+  .star {
+    position: absolute; width: 2px; height: 2px; background: #fff;
+    border-radius: 50%; animation: twinkle var(--d, 3s) var(--delay, 0s) infinite ease-in-out;
+    opacity: var(--op, 0.6);
+  }
+  @keyframes twinkle { 0%,100%{opacity:var(--op,.6)} 50%{opacity:.15} }
+
+  /* Crescent */
+  .crescent {
+    position: absolute; top: 60px; right: 80px;
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    box-shadow: inset -20px -8px 0 0 var(--gold-light);
+    filter: drop-shadow(0 0 18px rgba(232,184,75,.5));
+    animation: floatMoon 6s ease-in-out infinite;
+  }
+  @keyframes floatMoon { 0%,100%{transform:translateY(0) rotate(-15deg)} 50%{transform:translateY(-12px) rotate(-15deg)} }
+
+  /* Lanterns */
+  .lanterns {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; overflow: hidden;
+  }
+  .lantern {
+    position: absolute; top: -10px;
+    width: 18px; height: 30px;
+    background: radial-gradient(ellipse at 50% 40%, var(--gold-light) 0%, var(--gold) 60%, #8a5a00 100%);
+    border-radius: 40% 40% 60% 60%;
+    box-shadow: 0 0 12px 4px rgba(232,184,75,.4);
+    animation: swingLantern var(--sd, 4s) var(--sdelay, 0s) ease-in-out infinite;
+    transform-origin: top center;
+  }
+  .lantern::before {
+    content: ''; position: absolute; top: -6px; left: 50%; transform: translateX(-50%);
+    width: 2px; height: 8px; background: var(--gold);
+  }
+  .lantern::after {
+    content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%);
+    width: 1px; height: 10px; background: var(--gold-pale);
+  }
+  @keyframes swingLantern { 0%,100%{transform:rotate(-12deg)} 50%{transform:rotate(12deg)} }
+
+  .hero-badge {
+    display: inline-block; padding: 6px 22px;
+    border: 1px solid var(--gold); border-radius: 30px;
+    color: var(--gold-pale); font-size: 0.85rem; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 28px;
+    animation: fadeUp .8s ease both;
+  }
+  .hero-title-en {
+    font-family: 'Cinzel Decorative', serif; font-size: clamp(2rem, 5vw, 3.6rem);
+    color: #fff; line-height: 1.2; margin-bottom: 12px;
+    animation: fadeUp .8s .15s ease both;
+  }
+  .hero-title-bn {
+    font-family: 'Hind Siliguri', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem);
+    color: #fff; font-weight: 700; line-height: 1.3; margin-bottom: 12px;
+    animation: fadeUp .8s .15s ease both;
+  }
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: var(--gold-light); font-weight: 500; margin-bottom: 8px;
+    animation: fadeUp .8s .25s ease both;
+  }
+  .hero-divider {
+    width: 120px; height: 2px; margin: 20px auto;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation: fadeUp .8s .3s ease both;
+  }
+  .hero-meta {
+    display: flex; gap: 36px; justify-content: center; flex-wrap: wrap;
+    animation: fadeUp .8s .4s ease both;
+  }
+  .hero-meta-item {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+  .hero-meta-icon { font-size: 1.5rem; }
+  .hero-meta-label { color: var(--gold-pale); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+  .hero-meta-value { color: #fff; font-size: 1rem; font-weight: 600; }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+  .scroll-hint {
+    position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,.5); font-size: 0.75rem; display: flex;
+    flex-direction: column; align-items: center; gap: 6px; animation: bob 2s infinite;
+  }
+  .scroll-hint-arrow { font-size: 1.2rem; }
+  @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+  /* ── SECTION BASE ── */
+  section { padding: 80px 24px; }
+  .section-inner { max-width: 900px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block; color: var(--gold); font-size: 0.78rem;
+    letter-spacing: 3px; text-transform: uppercase; font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700;
+    color: var(--deep); line-height: 1.3; margin-bottom: 20px;
+  }
+  .section-title.light { color: #fff; }
+  .section-divider {
+    width: 60px; height: 3px; background: var(--gold);
+    border-radius: 2px; margin-bottom: 32px;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: #fff; }
+  .about-card {
+    background: linear-gradient(135deg, #f9f5ec, #fff8e8);
+    border: 1px solid rgba(201,151,42,.25);
+    border-radius: 16px; padding: 48px; position: relative; overflow: hidden;
+  }
+  .about-card::before {
+    content: '☪'; position: absolute; right: 32px; top: 24px;
+    font-size: 6rem; color: rgba(201,151,42,.08); line-height: 1;
+  }
+  .about-text { font-size: 1.05rem; line-height: 1.9; color: #3a4a40; }
+  .about-text + .about-text { margin-top: 24px; padding-top: 24px; border-top: 1px dashed rgba(201,151,42,.3); }
+  .about-quote {
+    font-size: 1.3rem; color: var(--emerald); font-weight: 600;
+    border-left: 4px solid var(--gold); padding-left: 20px; margin: 28px 0;
+    font-style: italic;
+  }
+
+  /* ── EVENT DETAILS ── */
+  #details {
+    background:
+      radial-gradient(ellipse at 10% 60%, rgba(13,92,69,.9), transparent 55%),
+      linear-gradient(150deg, #0a2e1f 0%, #0d4a35 50%, #09281c 100%);
+    color: #fff;
+  }
+  .details-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px;
+  }
+  @media(max-width:640px){ .details-grid{ grid-template-columns: 1fr; } }
+
+  .detail-card {
+    background: rgba(255,255,255,.07); border: 1px solid rgba(201,151,42,.25);
+    border-radius: 14px; padding: 28px; display: flex; gap: 20px; align-items: flex-start;
+    transition: background .25s;
+  }
+  .detail-card:hover { background: rgba(201,151,42,.1); }
+  .detail-icon { font-size: 2rem; flex-shrink: 0; }
+  .detail-label { color: var(--gold-light); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+  .detail-value { font-size: 1.05rem; font-weight: 600; color: #fff; line-height: 1.5; }
+  .detail-sub { font-size: 0.88rem; color: rgba(255,255,255,.6); margin-top: 4px; }
+
+  /* Map placeholder */
+  .map-placeholder {
+    border-radius: 14px; overflow: hidden; border: 2px solid rgba(201,151,42,.3);
+    margin-bottom: 40px; position: relative;
+  }
+  .map-inner {
+    background: linear-gradient(135deg, #0d3d2c, #1a5c45);
+    height: 280px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 12px;
+    color: rgba(255,255,255,.7);
+  }
+  .map-pin { font-size: 3rem; animation: bounce 1.5s infinite; }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .map-label { font-size: 1.05rem; font-weight: 600; color: var(--gold-light); }
+  .map-sub { font-size: 0.85rem; color: rgba(255,255,255,.55); }
+  .map-link {
+    display: inline-block; margin-top: 12px; padding: 8px 22px;
+    border: 1px solid var(--gold); border-radius: 30px; color: var(--gold-light);
+    text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: all .2s;
+  }
+  .map-link:hover { background: var(--gold); color: #fff; }
+
+  /* ── COUNTDOWN ── */
+  .countdown-wrap {
+    background: rgba(0,0,0,.25); border: 1px solid rgba(201,151,42,.3);
+    border-radius: 16px; padding: 36px; text-align: center;
+  }
+  .countdown-title { color: var(--gold-pale); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; }
+  .countdown-grid { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .countdown-unit {
+    display: flex; flex-direction: column; align-items: center; min-width: 80px;
+  }
+  .countdown-num {
+    font-family: 'Cinzel Decorative', serif; font-size: clamp(2rem, 5vw, 2.8rem);
+    color: var(--gold-light); line-height: 1;
+    background: rgba(255,255,255,.06); border: 1px solid rgba(201,151,42,.3);
+    border-radius: 10px; padding: 14px 18px; min-width: 80px; text-align: center;
+    transition: transform .2s;
+  }
+  .countdown-num.bump { transform: scale(1.08); }
+  .countdown-lbl { font-size: 0.72rem; color: rgba(255,255,255,.5); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 8px; }
+  .countdown-sep { font-size: 2rem; color: var(--gold); align-self: center; margin-bottom: 24px; }
+
+  /* ── REGISTRATION ── */
+  #register {
+    background: linear-gradient(135deg, #fdf6e3 0%, #fef9ed 100%);
+  }
+  .reg-intro { font-size: 1.05rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 36px; }
+  .payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px; }
+  @media(max-width:560px){ .payment-grid{ grid-template-columns: 1fr; } }
+
+  .payment-card {
+    border-radius: 16px; padding: 32px; text-align: center;
+    position: relative; overflow: hidden; transition: transform .25s, box-shadow .25s;
+  }
+  .payment-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.12); }
+
+  .payment-card.bkash {
+    background: linear-gradient(135deg, #e2136e 0%, #c00d5e 100%);
+    color: #fff;
+  }
+  .payment-card.nagad {
+    background: linear-gradient(135deg, #f05a28 0%, #d94d1e 100%);
+    color: #fff;
+  }
+  .payment-logo { font-size: 2.8rem; margin-bottom: 12px; }
+  .payment-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; }
+  .payment-number { font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; margin: 12px 0; font-family: 'Lato', sans-serif; }
+  .payment-type { font-size: 0.82rem; opacity: .85; }
+  .payment-copy {
+    margin-top: 14px; padding: 8px 20px; border: 2px solid rgba(255,255,255,.6);
+    background: transparent; color: #fff; border-radius: 30px; font-size: 0.82rem;
+    cursor: pointer; font-family: 'Hind Siliguri', sans-serif; font-weight: 600;
+    transition: all .2s;
+  }
+  .payment-copy:hover { background: rgba(255,255,255,.2); }
+  .payment-copy.copied { border-color: #fff; background: rgba(255,255,255,.25); }
+
+  .reg-steps {
+    background: #fff; border: 1px solid rgba(201,151,42,.2);
+    border-radius: 14px; padding: 32px;
+  }
+  .reg-steps-title {
+    font-size: 1rem; font-weight: 700; color: var(--emerald);
+    margin-bottom: 20px; display: flex; align-items: center; gap: 8px;
+  }
+  .step { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+  .step:last-child { margin-bottom: 0; }
+  .step-num {
+    width: 30px; height: 30px; border-radius: 50%; background: var(--emerald);
+    color: #fff; font-size: 0.82rem; font-weight: 700; display: flex;
+    align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+  }
+  .step-text { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep); color: rgba(255,255,255,.6);
+    text-align: center; padding: 40px 24px;
+    border-top: 1px solid rgba(201,151,42,.2);
+  }
+  .footer-crescent { font-size: 2rem; color: var(--gold); margin-bottom: 12px; }
+  .footer-text { font-size: 0.85rem; line-height: 1.9; }
+  .footer-batch { color: var(--gold-light); font-weight: 600; }
+
+  /* ── SCROLLREVEAL ── */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE NAV ── */
+  @media(max-width:640px){
+    .nav-links { display: none; }
+    .nav-brand { font-size: 0.8rem; }
+  }
+
+  /* ── DONATION FORM ── */
+  .form-divider {
+    display: flex; align-items: center; gap: 16px; margin: 44px 0 36px;
+  }
+  .form-divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,151,42,.4), transparent); }
+  .form-divider-icon { font-size: 1.4rem; color: var(--gold); }
+  .form-divider-text { color: var(--emerald); font-weight: 700; font-size: 1rem; white-space: nowrap; }
+
+  /* Payment info banner */
+  .pay-info-banner {
+    background: linear-gradient(135deg, #0a2e1f, #0d4530);
+    border-radius: 16px; padding: 28px 32px; margin-bottom: 32px;
+    border: 1px solid rgba(201,151,42,.3);
+  }
+  .pay-info-title {
+    color: var(--gold-light); font-size: 0.78rem; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 18px; font-weight: 600;
+  }
+  .pay-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media(max-width:540px){ .pay-info-grid{ grid-template-columns: 1fr; } }
+
+  .pay-info-item {
+    display: flex; align-items: center; gap: 14px;
+    background: rgba(255,255,255,.06); border-radius: 12px;
+    padding: 16px 18px; border: 1px solid rgba(255,255,255,.08);
+  }
+  .pay-info-logo {
+    width: 46px; height: 46px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; flex-shrink: 0;
+  }
+  .pay-info-logo.bkash-logo { background: #e2136e; }
+  .pay-info-logo.nagad-logo { background: #f05a28; }
+  .pay-info-details { flex: 1; min-width: 0; }
+  .pay-info-service { color: #fff; font-weight: 700; font-size: 0.95rem; }
+  .pay-info-badge {
+    display: inline-block; font-size: 0.65rem; padding: 2px 8px;
+    border-radius: 10px; font-weight: 600; letter-spacing: .5px;
+    margin-left: 6px; vertical-align: middle;
+  }
+  .badge-personal { background: rgba(255,255,255,.15); color: rgba(255,255,255,.8); }
+  .badge-merchant { background: rgba(232,184,75,.25); color: var(--gold-light); }
+  .pay-info-num { color: var(--gold-pale); font-family: 'Lato', monospace; font-size: 1rem; font-weight: 700; letter-spacing: 1px; margin-top: 3px; }
+  .pay-info-copy-btn {
+    background: transparent; border: 1px solid rgba(255,255,255,.2);
+    color: rgba(255,255,255,.6); border-radius: 8px; padding: 6px 10px;
+    font-size: 0.75rem; cursor: pointer; flex-shrink: 0; transition: all .2s;
+    font-family: 'Hind Siliguri', sans-serif;
+  }
+  .pay-info-copy-btn:hover { background: rgba(255,255,255,.1); color: #fff; border-color: rgba(255,255,255,.4); }
+
+  /* Form container */
+  .donation-form-wrap {
+    background: #fff;
+    border: 1px solid rgba(201,151,42,.2);
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,.07);
+  }
+  .form-header {
+    background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+    padding: 28px 36px; display: flex; align-items: center; gap: 14px;
+  }
+  .form-header-icon { font-size: 2rem; }
+  .form-header-title { color: #fff; font-size: 1.15rem; font-weight: 700; }
+  .form-header-sub { color: rgba(255,255,255,.75); font-size: 0.85rem; margin-top: 2px; }
+
+  .donation-form { padding: 36px; }
+  @media(max-width:560px){ .donation-form{ padding: 24px; } }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media(max-width:560px){ .form-row{ grid-template-columns: 1fr; } }
+
+  .form-group { margin-bottom: 22px; }
+  .form-label {
+    display: block; font-size: 0.82rem; font-weight: 600;
+    color: var(--emerald); margin-bottom: 8px; letter-spacing: .3px;
+  }
+  .form-label .required { color: #e2136e; margin-left: 3px; }
+
+  .form-input, .form-select {
+    width: 100%; padding: 12px 16px;
+    border: 2px solid #e8ede9; border-radius: 10px;
+    font-family: 'Hind Siliguri', sans-serif; font-size: 0.95rem;
+    color: var(--text-dark); background: #fafcfb;
+    transition: border-color .2s, box-shadow .2s; outline: none;
+    appearance: none;
+  }
+  .form-input:focus, .form-select:focus {
+    border-color: var(--emerald); background: #fff;
+    box-shadow: 0 0 0 3px rgba(13,92,69,.1);
+  }
+  .form-input.error { border-color: #e2136e; box-shadow: 0 0 0 3px rgba(226,19,110,.08); }
+  .form-input::placeholder { color: #b0bdb4; }
+
+  /* Amount field with ৳ prefix */
+  .input-prefix-wrap { position: relative; }
+  .input-prefix {
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--emerald); font-weight: 700; font-size: 1rem; pointer-events: none;
+  }
+  .input-prefix-wrap .form-input { padding-left: 30px; }
+
+  /* Payment method select */
+  .form-select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230d5c45' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
+
+  /* File upload */
+  .file-upload-area {
+    border: 2px dashed #c8d8cc; border-radius: 12px;
+    padding: 28px; text-align: center; cursor: pointer;
+    transition: all .25s; background: #f8fbf9; position: relative;
+  }
+  .file-upload-area:hover, .file-upload-area.dragover {
+    border-color: var(--emerald); background: #f0f8f4;
+  }
+  .file-upload-area.has-file { border-color: var(--gold); background: #fffbf0; border-style: solid; }
+  .file-upload-input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .file-upload-icon { font-size: 2.2rem; margin-bottom: 10px; }
+  .file-upload-text { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+  .file-upload-text strong { color: var(--emerald); }
+  .file-upload-accepted { font-size: 0.78rem; color: #9ab0a2; margin-top: 6px; }
+  .file-preview {
+    display: none; align-items: center; gap: 12px;
+    background: rgba(201,151,42,.1); border-radius: 8px; padding: 10px 14px; margin-top: 12px;
+  }
+  .file-preview.show { display: flex; }
+  .file-preview-thumb { width: 48px; height: 48px; object-fit: cover; border-radius: 6px; border: 1px solid rgba(201,151,42,.3); }
+  .file-preview-name { font-size: 0.85rem; color: var(--emerald); font-weight: 600; flex: 1; word-break: break-all; }
+  .file-preview-remove { background: none; border: none; color: #e2136e; cursor: pointer; font-size: 1.1rem; padding: 2px 6px; border-radius: 4px; transition: background .2s; }
+  .file-preview-remove:hover { background: rgba(226,19,110,.1); }
+
+  /* Error message */
+  .field-error { color: #e2136e; font-size: 0.78rem; margin-top: 5px; display: none; }
+  .field-error.show { display: block; }
+
+  /* Submit button */
+  .submit-btn {
+    width: 100%; padding: 16px; border-radius: 12px; border: none;
+    background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+    color: #fff; font-family: 'Hind Siliguri', sans-serif; font-size: 1.05rem;
+    font-weight: 700; cursor: pointer; transition: all .25s; margin-top: 8px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    position: relative; overflow: hidden;
+  }
+  .submit-btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--gold), #b8860b);
+    opacity: 0; transition: opacity .3s;
+  }
+  .submit-btn:hover::before { opacity: 1; }
+  .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(13,92,69,.35); }
+  .submit-btn:active { transform: translateY(0); }
+  .submit-btn span { position: relative; z-index: 1; }
+  .submit-btn .btn-icon { font-size: 1.2rem; position: relative; z-index: 1; }
+  .submit-btn.loading { pointer-events: none; opacity: .8; }
+  .spinner { width: 20px; height: 20px; border: 2px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite; position: relative; z-index: 1; }
+  @keyframes spin { to{ transform: rotate(360deg); } }
+
+  /* Success message */
+  .success-overlay {
+    display: none; text-align: center; padding: 48px 32px;
+    animation: fadeIn .5s ease;
+  }
+  .success-overlay.show { display: block; }
+  @keyframes fadeIn { from{opacity:0;transform:scale(.95)} to{opacity:1;transform:scale(1)} }
+  .success-checkmark {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+    margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;
+    font-size: 2.4rem; box-shadow: 0 8px 30px rgba(13,92,69,.3);
+    animation: popIn .5s cubic-bezier(.175,.885,.32,1.275) both;
+  }
+  @keyframes popIn { from{transform:scale(0)} to{transform:scale(1)} }
+  .success-title { font-size: 1.6rem; font-weight: 700; color: var(--emerald); margin-bottom: 12px; }
+  .success-bn { font-size: 1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 8px; }
+  .success-en { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; font-style: italic; }
+  .success-trxid {
+    display: inline-block; margin: 16px 0; padding: 8px 20px;
+    background: rgba(13,92,69,.08); border: 1px solid rgba(13,92,69,.2);
+    border-radius: 8px; font-family: 'Lato', monospace; font-size: 0.9rem;
+    color: var(--emerald); font-weight: 600;
+  }
+  .success-note {
+    font-size: 0.82rem; color: #9ab0a2; margin-top: 12px; line-height: 1.7;
+  }
+  .success-new-btn {
+    margin-top: 24px; padding: 10px 28px; border-radius: 30px;
+    border: 2px solid var(--emerald); background: transparent; color: var(--emerald);
+    font-family: 'Hind Siliguri', sans-serif; font-weight: 600; cursor: pointer;
+    transition: all .2s; font-size: 0.9rem;
+  }
+  .success-new-btn:hover { background: var(--emerald); color: #fff; }
+</style>
+</head>
+<body>
+
+<!-- Language Toggle -->
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('bn')">বাং</button>
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-brand">☪ Batch 2023</div>
+  <div class="nav-links">
+    <a href="#about"><span class="bn">পরিচিতি</span><span class="en">About</span></a>
+    <a href="#details"><span class="bn">বিস্তারিত</span><span class="en">Details</span></a>
+    <a href="#register"><span class="bn">রেজিস্ট্রেশন</span><span class="en">Register</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <!-- Stars -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Crescent -->
+  <div class="crescent"></div>
+
+  <!-- Lanterns -->
+  <div class="lanterns" id="lanterns"></div>
+
+  <div class="hero-badge">✦ Ramadan Mubarak ✦ রমজান মোবারক ✦</div>
+
+  <h1 class="hero-title-en en">School Reunion<br>Iftar Party</h1>
+  <h1 class="hero-title-bn bn">স্কুল রিউনিয়ন<br>ইফতার পার্টি</h1>
+
+  <p class="hero-subtitle">
+    <span class="bn">ব্যাচ ২০২৩ — পঞ্চপুকুর স্কুল অ্যান্ড কলেজ</span>
+    <span class="en">Batch 2023 — Panchapukur School & College</span>
+  </p>
+
+  <div class="hero-divider"></div>
+
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="hero-meta-icon">📅</span>
+      <span class="hero-meta-label bn">তারিখ</span>
+      <span class="hero-meta-label en">Date</span>
+      <span class="hero-meta-value">১৭ মার্চ ২০২৬</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-icon">🕔</span>
+      <span class="hero-meta-label bn">সময়</span>
+      <span class="hero-meta-label en">Time</span>
+      <span class="hero-meta-value bn">বিকাল ৫:০০টা</span>
+      <span class="hero-meta-value en">5:00 PM</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-icon">📍</span>
+      <span class="hero-meta-label bn">স্থান</span>
+      <span class="hero-meta-label en">Venue</span>
+      <span class="hero-meta-value bn">পঞ্চপুকুর স্কুল</span>
+      <span class="hero-meta-value en">Panchapukur School</span>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span class="bn">নিচে দেখুন</span>
+    <span class="en">Scroll down</span>
+    <span class="scroll-hint-arrow">↓</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-tag">
+        <span class="bn">আমাদের সম্পর্কে</span>
+        <span class="en">About</span>
+      </span>
+      <h2 class="section-title">
+        <span class="bn">পুরনো স্মৃতির পথে — আবার একসাথে</span>
+        <span class="en">Old Memories, New Beginnings</span>
+      </h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="about-card reveal">
+      <div class="about-quote">
+        <span class="bn">"বছরের পর বছর কেটে গেছে, কিন্তু সেই ছোট্ট উঠোনের হাসি আজও মনে আছে।"</span>
+        <span class="en">"Years have passed, but the laughter of those school days still echoes in our hearts."</span>
+      </div>
+
+      <p class="about-text bn">
+        ব্যাচ ২০২৩ — আমাদের সেই সোনালি দিনগুলোর বন্ধু, সহপাঠী, আর স্মৃতির সাথীরা। এই পবিত্র রমজান মাসে আমরা একত্রিত হচ্ছি এক অসাধারণ ইফতারের টেবিলে। পঞ্চপুকুর স্কুল অ্যান্ড কলেজের সেই চেনা প্রাঙ্গণে আবার মিলিত হওয়ার সুযোগ — এ এক বিরল আনন্দ।
+      </p>
+      <p class="about-text en">
+        Batch 2023 — our classmates, friends, and fellow dreamers from those golden school days. This holy Ramadan, we gather once again around the iftar table at our beloved Panchapukur School & College. It's a rare joy to reconnect with the faces that shaped our childhood.
+      </p>
+
+      <p class="about-text bn">
+        ইফতারের দস্তরখানে বসে পুরনো গল্প, নতুন স্বপ্ন, আর প্রিয় বন্ধুদের সাথে সময় কাটানোর এই মুহূর্তটি হোক অবিস্মরণীয়। সবাইকে আন্তরিকভাবে আমন্ত্রণ জানাই!
+      </p>
+      <p class="about-text en">
+        Let's sit together, share our stories, relive the nostalgia, and make new memories over the blessed iftar spread. You are warmly invited — don't miss this unforgettable evening!
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- EVENT DETAILS -->
+<section id="details">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-tag">
+        <span class="bn">অনুষ্ঠানের বিস্তারিত</span>
+        <span class="en">Event Details</span>
+      </span>
+      <h2 class="section-title light">
+        <span class="bn">তারিখ, সময় ও স্থান</span>
+        <span class="en">Date, Time & Venue</span>
+      </h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="details-grid reveal">
+      <div class="detail-card">
+        <div class="detail-icon">📅</div>
+        <div>
+          <div class="detail-label"><span class="bn">তারিখ</span><span class="en">Date</span></div>
+          <div class="detail-value">
+            <span class="bn">১৭ মার্চ, ২০২৬ (মঙ্গলবার)</span>
+            <span class="en">17 March, 2026 (Tuesday)</span>
+          </div>
+          <div class="detail-sub">
+            <span class="bn">রমজান মাস — ১৪৪৭ হিজরি</span>
+            <span class="en">Ramadan 1447 AH</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-icon">🕔</div>
+        <div>
+          <div class="detail-label"><span class="bn">সময়</span><span class="en">Time</span></div>
+          <div class="detail-value">
+            <span class="bn">বিকাল ৫:০০টা থেকে</span>
+            <span class="en">From 5:00 PM</span>
+          </div>
+          <div class="detail-sub">
+            <span class="bn">ইফতারের সময় পর্যন্ত</span>
+            <span class="en">Until Iftar time</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-icon">📍</div>
+        <div>
+          <div class="detail-label"><span class="bn">স্থান</span><span class="en">Venue</span></div>
+          <div class="detail-value">
+            <span class="bn">পঞ্চপুকুর স্কুল অ্যান্ড কলেজ</span>
+            <span class="en">Panchapukur School & College</span>
+          </div>
+          <div class="detail-sub">Plus Code: WWHH+Q9C</div>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-icon">🎓</div>
+        <div>
+          <div class="detail-label"><span class="bn">আয়োজক</span><span class="en">Organized by</span></div>
+          <div class="detail-value">
+            <span class="bn">ব্যাচ ২০২৩</span>
+            <span class="en">Batch 2023</span>
+          </div>
+          <div class="detail-sub">
+            <span class="bn">পঞ্চপুকুর স্কুল অ্যান্ড কলেজ</span>
+            <span class="en">Panchapukur School & College</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map Placeholder -->
+    <div class="map-placeholder reveal">
+      <div class="map-inner">
+        <div class="map-pin">📍</div>
+        <div class="map-label">
+          <span class="bn">পঞ্চপুকুর স্কুল অ্যান্ড কলেজ</span>
+          <span class="en">Panchapukur School & College</span>
+        </div>
+        <div class="map-sub">Plus Code: WWHH+Q9C</div>
+        <a class="map-link" href="https://maps.google.com/?q=WWHH+Q9C" target="_blank">
+          <span class="bn">🗺️ Google Maps-এ দেখুন</span>
+          <span class="en">🗺️ Open in Google Maps</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Countdown -->
+    <div class="countdown-wrap reveal">
+      <div class="countdown-title">
+        <span class="bn">⏳ অনুষ্ঠান শুরু হতে বাকি</span>
+        <span class="en">⏳ Countdown to the Event</span>
+      </div>
+      <div class="countdown-grid">
+        <div class="countdown-unit">
+          <div class="countdown-num" id="cd-days">--</div>
+          <div class="countdown-lbl"><span class="bn">দিন</span><span class="en">Days</span></div>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <div class="countdown-num" id="cd-hours">--</div>
+          <div class="countdown-lbl"><span class="bn">ঘণ্টা</span><span class="en">Hours</span></div>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <div class="countdown-num" id="cd-mins">--</div>
+          <div class="countdown-lbl"><span class="bn">মিনিট</span><span class="en">Mins</span></div>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <div class="countdown-num" id="cd-secs">--</div>
+          <div class="countdown-lbl"><span class="bn">সেকেন্ড</span><span class="en">Secs</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRATION / DONATION -->
+<section id="register">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-tag">
+        <span class="bn">রেজিস্ট্রেশন ও পেমেন্ট</span>
+        <span class="en">Registration & Payment</span>
+      </span>
+      <h2 class="section-title">
+        <span class="bn">অংশগ্রহণ নিশ্চিত করুন</span>
+        <span class="en">Confirm Your Participation</span>
+      </h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <p class="reg-intro reveal">
+      <span class="bn">অনুষ্ঠানে অংশ নিতে নিচের যেকোনো মাধ্যমে পেমেন্ট করুন এবং পেমেন্টের স্ক্রিনশট আমাদের জানান। আপনার উপস্থিতি আমাদের অনুষ্ঠানকে আরও আনন্দময় করে তুলবে।</span>
+      <span class="en">To confirm your attendance, please send your contribution via bKash or Nagad and share the payment screenshot with us. Your presence will make this reunion truly special.</span>
+    </p>
+
+    <div class="payment-grid reveal">
+      <!-- bKash -->
+      <div class="payment-card bkash">
+        <div class="payment-logo">💳</div>
+        <div class="payment-name">bKash</div>
+        <div class="payment-type">
+          <span class="bn">পার্সোনাল নম্বর</span>
+          <span class="en">Personal Number</span>
+        </div>
+        <div class="payment-number">01316-586101</div>
+        <div class="payment-type">
+          <span class="bn">Send Money করুন</span>
+          <span class="en">Send Money</span>
+        </div>
+        <button class="payment-copy" onclick="copyNum(this,'01316-586101')">
+          <span class="bn">📋 নম্বর কপি করুন</span>
+          <span class="en">📋 Copy Number</span>
+        </button>
+      </div>
+
+      <!-- Nagad -->
+      <div class="payment-card nagad">
+        <div class="payment-logo">📱</div>
+        <div class="payment-name">Nagad</div>
+        <div class="payment-type">
+          <span class="bn">পার্সোনাল নম্বর</span>
+          <span class="en">Personal Number</span>
+        </div>
+        <div class="payment-number">01316-586101</div>
+        <div class="payment-type">
+          <span class="bn">Send Money করুন</span>
+          <span class="en">Send Money</span>
+        </div>
+        <button class="payment-copy" onclick="copyNum(this,'01316-586101')">
+          <span class="bn">📋 নম্বর কপি করুন</span>
+          <span class="en">📋 Copy Number</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Steps -->
+    <div class="reg-steps reveal">
+      <div class="reg-steps-title">
+        <span>📋</span>
+        <span class="bn">পেমেন্ট করার ধাপসমূহ</span>
+        <span class="en">How to Pay</span>
+      </div>
+
+      <div class="bn">
+        <div class="step"><div class="step-num">১</div><div class="step-text">bKash বা Nagad অ্যাপ খুলুন এবং "Send Money" অপশনটি বেছে নিন।</div></div>
+        <div class="step"><div class="step-num">২</div><div class="step-text">উপরে দেওয়া নম্বরে নির্ধারিত পরিমাণ টাকা পাঠান।</div></div>
+        <div class="step"><div class="step-num">৩</div><div class="step-text">পেমেন্টের পর নিচের ফর্মটি পূরণ করুন এবং স্ক্রিনশট আপলোড করুন।</div></div>
+        <div class="step"><div class="step-num">৪</div><div class="step-text">আপনার রেজিস্ট্রেশন নিশ্চিত হলে আমরা আপনাকে কনফার্মেশন মেসেজ পাঠাব।</div></div>
+      </div>
+
+      <div class="en">
+        <div class="step"><div class="step-num">1</div><div class="step-text">Open your bKash or Nagad app and select "Send Money".</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Send the required amount to the number listed above.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">Fill in the form below and upload your payment screenshot.</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text">Once confirmed, we'll send you a registration confirmation message.</div></div>
+      </div>
+    </div>
+
+    <!-- ─────── FORM DIVIDER ─────── -->
+    <div class="form-divider reveal">
+      <div class="form-divider-line"></div>
+      <span class="form-divider-icon">✦</span>
+      <span class="form-divider-text">
+        <span class="bn">পেমেন্ট তথ্য ও ফর্ম জমা দিন</span>
+        <span class="en">Payment Info & Submission Form</span>
+      </span>
+      <span class="form-divider-icon">✦</span>
+      <div class="form-divider-line"></div>
+    </div>
+
+    <!-- ─────── PAYMENT INFO BANNER ─────── -->
+    <div class="pay-info-banner reveal">
+      <div class="pay-info-title">
+        <span class="bn">💰 পেমেন্ট নম্বরসমূহ — এখানে পাঠান</span>
+        <span class="en">💰 Payment Numbers — Send Here</span>
+      </div>
+      <div class="pay-info-grid">
+        <!-- bKash -->
+        <div class="pay-info-item">
+          <div class="pay-info-logo bkash-logo">💳</div>
+          <div class="pay-info-details">
+            <div class="pay-info-service">
+              bKash
+              <span class="pay-info-badge badge-personal">
+                <span class="bn">পার্সোনাল</span><span class="en">Personal</span>
+              </span>
+            </div>
+            <div class="pay-info-num" id="bkash-display-num">01316-586101</div>
+          </div>
+          <button class="pay-info-copy-btn" onclick="copyNum(this,'01316-586101')">
+            <span class="bn">কপি</span><span class="en">Copy</span>
+          </button>
+        </div>
+        <!-- Nagad -->
+        <div class="pay-info-item">
+          <div class="pay-info-logo nagad-logo">📱</div>
+          <div class="pay-info-details">
+            <div class="pay-info-service">
+              Nagad
+              <span class="pay-info-badge badge-merchant">
+                <span class="bn">মার্চেন্ট</span><span class="en">Merchant</span>
+              </span>
+            </div>
+            <div class="pay-info-num" id="nagad-display-num">01316-586101</div>
+          </div>
+          <button class="pay-info-copy-btn" onclick="copyNum(this,'01316-586101')">
+            <span class="bn">কপি</span><span class="en">Copy</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────── DONATION FORM ─────── -->
+    <div class="donation-form-wrap reveal">
+      <div class="form-header">
+        <div class="form-header-icon">📝</div>
+        <div>
+          <div class="form-header-title">
+            <span class="bn">রেজিস্ট্রেশন ফর্ম — পেমেন্ট যাচাই</span>
+            <span class="en">Registration Form — Payment Verification</span>
+          </div>
+          <div class="form-header-sub">
+            <span class="bn">পেমেন্ট করার পর নিচের তথ্যগুলো পূরণ করুন</span>
+            <span class="en">Fill in the details below after making your payment</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div class="success-overlay" id="success-overlay">
+        <div class="success-checkmark">✓</div>
+        <div class="success-title">
+          <span class="bn">জাযাকাল্লাহু খায়রান! 🌙</span>
+          <span class="en">JazakAllahu Khayran! 🌙</span>
+        </div>
+        <div class="success-bn bn">
+          আপনার রেজিস্ট্রেশন সফলভাবে জমা হয়েছে।<br>
+          আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।<br>
+          <strong>ইফতার পার্টিতে আপনাকে স্বাগতম! 🎉</strong>
+        </div>
+        <div class="success-en en">
+          Your registration has been submitted successfully.<br>
+          We will get in touch with you shortly.<br>
+          <strong>Welcome to the Iftar Party! 🎉</strong>
+        </div>
+        <div class="success-trxid" id="success-trxid-display"></div>
+        <div class="success-note">
+          <span class="bn">Transaction ID-টি সংরক্ষণ করুন। কোনো সমস্যা হলে আমাদের সাথে যোগাযোগ করুন।</span>
+          <span class="en">Please save your Transaction ID. Contact us if you face any issues.</span>
+        </div>
+        <button class="success-new-btn" onclick="resetForm()">
+          <span class="bn">↩ আরেকটি জমা দিন</span>
+          <span class="en">↩ Submit Another</span>
+        </button>
+      </div>
+
+      <!-- FORM FIELDS -->
+      <div id="form-fields" class="donation-form">
+        <!-- Row 1: Name + Phone -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="f-name">
+              <span class="bn">পূর্ণ নাম</span><span class="en">Full Name</span>
+              <span class="required">*</span>
+            </label>
+            <input class="form-input" type="text" id="f-name" name="fullName"
+              placeholder-bn="আপনার পূর্ণ নাম লিখুন" placeholder="আপনার পূর্ণ নাম লিখুন" autocomplete="name"/>
+            <div class="field-error" id="err-name">
+              <span class="bn">নাম আবশ্যক</span><span class="en">Name is required</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-phone">
+              <span class="bn">ফোন নম্বর</span><span class="en">Phone Number</span>
+              <span class="required">*</span>
+            </label>
+            <input class="form-input" type="tel" id="f-phone" name="phone"
+              placeholder="01XXXXXXXXX" maxlength="14"/>
+            <div class="field-error" id="err-phone">
+              <span class="bn">সঠিক ফোন নম্বর দিন</span><span class="en">Enter a valid phone number</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Payment Method + bKash/Nagad Number -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="f-method">
+              <span class="bn">পেমেন্ট মাধ্যম</span><span class="en">Payment Method</span>
+              <span class="required">*</span>
+            </label>
+            <select class="form-input form-select" id="f-method" name="paymentMethod">
+              <option value="">
+                — বেছে নিন / Select —
+              </option>
+              <option value="bkash">💳 bKash</option>
+              <option value="nagad">📱 Nagad</option>
+            </select>
+            <div class="field-error" id="err-method">
+              <span class="bn">পেমেন্ট মাধ্যম বেছে নিন</span><span class="en">Please select a payment method</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-paynum">
+              <span class="bn">যে নম্বর থেকে পেমেন্ট করেছেন</span><span class="en">Number Used for Payment</span>
+              <span class="required">*</span>
+            </label>
+            <input class="form-input" type="tel" id="f-paynum" name="paymentNumber"
+              placeholder="01XXXXXXXXX" maxlength="14"/>
+            <div class="field-error" id="err-paynum">
+              <span class="bn">পেমেন্ট নম্বর দিন</span><span class="en">Enter the payment number</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3: TrxID + Amount -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="f-trx">
+              <span class="bn">ট্রানজেকশন আইডি (TrxID)</span><span class="en">Transaction ID (TrxID)</span>
+              <span class="required">*</span>
+            </label>
+            <input class="form-input" type="text" id="f-trx" name="trxId"
+              placeholder="e.g. ABC1234567" style="font-family:'Lato',monospace; letter-spacing:1px;"/>
+            <div class="field-error" id="err-trx">
+              <span class="bn">Transaction ID দিন</span><span class="en">Transaction ID is required</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-amount">
+              <span class="bn">পরিমাণ (টাকা)</span><span class="en">Amount (BDT)</span>
+              <span class="required">*</span>
+            </label>
+            <div class="input-prefix-wrap">
+              <span class="input-prefix">৳</span>
+              <input class="form-input" type="number" id="f-amount" name="amount"
+                placeholder="500" min="1"/>
+            </div>
+            <div class="field-error" id="err-amount">
+              <span class="bn">সঠিক পরিমাণ দিন</span><span class="en">Enter a valid amount</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- File Upload -->
+        <div class="form-group">
+          <label class="form-label">
+            <span class="bn">পেমেন্ট স্ক্রিনশট</span><span class="en">Payment Screenshot</span>
+            <span class="required">*</span>
+          </label>
+          <div class="file-upload-area" id="upload-area">
+            <input class="file-upload-input" type="file" id="f-screenshot" name="screenshot"
+              accept="image/jpeg,image/png,image/webp,image/gif" onchange="handleFile(this)"/>
+            <div id="upload-placeholder">
+              <div class="file-upload-icon">📸</div>
+              <div class="file-upload-text">
+                <span class="bn"><strong>ক্লিক করুন</strong> বা ছবি টেনে আনুন</span>
+                <span class="en"><strong>Click to upload</strong> or drag & drop</span>
+              </div>
+              <div class="file-upload-accepted">JPG, PNG, WEBP — max 5MB</div>
+            </div>
+          </div>
+          <div class="file-preview" id="file-preview">
+            <img class="file-preview-thumb" id="preview-thumb" src="" alt="preview"/>
+            <span class="file-preview-name" id="preview-name"></span>
+            <button class="file-preview-remove" onclick="removeFile()" type="button" title="Remove">✕</button>
+          </div>
+          <div class="field-error" id="err-file">
+            <span class="bn">পেমেন্ট স্ক্রিনশট আপলোড করুন</span><span class="en">Please upload a payment screenshot</span>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <button class="submit-btn" id="submit-btn" onclick="submitForm()" type="button">
+          <span class="btn-icon">🕌</span>
+          <span>
+            <span class="bn">রেজিস্ট্রেশন জমা দিন</span>
+            <span class="en">Submit Registration</span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-crescent">☪</div>
+  <p class="footer-text">
+    <span class="bn">
+      রমজান মোবারক 🌙<br>
+      <span class="footer-batch">ব্যাচ ২০২৩ — পঞ্চপুকুর স্কুল অ্যান্ড কলেজ</span><br>
+      ইফতার পার্টি ২০২৬ — একসাথে, আবার
+    </span>
+    <span class="en">
+      Ramadan Mubarak 🌙<br>
+      <span class="footer-batch">Batch 2023 — Panchapukur School & College</span><br>
+      Iftar Party 2026 — Together, Again
+    </span>
+  </p>
+</footer>
+
+<script>
+/* ── STARS ── */
+const starsEl = document.getElementById('stars');
+for(let i=0;i<80;i++){
+  const s = document.createElement('div');
+  s.className = 'star';
+  s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;
+    --d:${2+Math.random()*4}s;--delay:${Math.random()*5}s;--op:${0.3+Math.random()*0.7};
+    width:${1+Math.random()*2}px;height:${1+Math.random()*2}px`;
+  starsEl.appendChild(s);
+}
+
+/* ── LANTERNS ── */
+const lanternsEl = document.getElementById('lanterns');
+const lPos = [8,18,30,42,56,68,80,92];
+lPos.forEach((l,i) => {
+  const el = document.createElement('div');
+  el.className = 'lantern';
+  el.style.cssText = `left:${l}%;--sd:${3+i*.5}s;--sdelay:${i*.4}s`;
+  lanternsEl.appendChild(el);
+});
+
+/* ── LANGUAGE ── */
+function setLang(lang){
+  document.body.classList.toggle('lang-en', lang==='en');
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    if((lang==='bn'&&b.textContent.includes('বাং'))||(lang==='en'&&b.textContent.includes('EN')))
+      b.classList.add('active');
+  });
+}
+
+/* ── COUNTDOWN ── */
+function updateCountdown(){
+  const target = new Date('2026-03-17T17:00:00').getTime();
+  const now = Date.now();
+  const diff = target - now;
+  if(diff <= 0){
+    ['days','hours','mins','secs'].forEach(id=>{
+      const el = document.getElementById('cd-'+id);
+      if(el) el.textContent='00';
+    });
+    return;
+  }
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor((diff%86400000)/3600000);
+  const m = Math.floor((diff%3600000)/60000);
+  const s = Math.floor((diff%60000)/1000);
+  const pad=n=>String(n).padStart(2,'0');
+  const set=(id,val)=>{
+    const el=document.getElementById('cd-'+id);
+    if(el&&el.textContent!==pad(val)){
+      el.textContent=pad(val);
+      el.classList.add('bump');
+      setTimeout(()=>el.classList.remove('bump'),200);
+    }
+  };
+  set('days',d); set('hours',h); set('mins',m); set('secs',s);
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+/* ── COPY NUMBER ── */
+function copyNum(btn, num){
+  navigator.clipboard.writeText(num).then(()=>{
+    btn.classList.add('copied');
+    const orig = btn.innerHTML;
+    btn.innerHTML = '✓ Copied!';
+    setTimeout(()=>{ btn.innerHTML=orig; btn.classList.remove('copied'); }, 2000);
+  }).catch(()=>{
+    btn.innerHTML = '✓ Done';
+    setTimeout(()=>{ btn.innerHTML='📋 Copy'; }, 1500);
+  });
+}
+
+/* ── SCROLL REVEAL ── */
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+/* ── FORM: FILE UPLOAD ── */
+function handleFile(input){
+  const file = input.files[0];
+  if(!file) return;
+  if(file.size > 5 * 1024 * 1024){
+    showErr('err-file', true);
+    input.value = '';
+    return;
+  }
+  showErr('err-file', false);
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('preview-thumb').src = e.target.result;
+    document.getElementById('preview-name').textContent = file.name;
+    document.getElementById('file-preview').classList.add('show');
+    document.getElementById('upload-area').classList.add('has-file');
+    document.getElementById('upload-placeholder').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+
+function removeFile(){
+  document.getElementById('f-screenshot').value = '';
+  document.getElementById('file-preview').classList.remove('show');
+  document.getElementById('upload-area').classList.remove('has-file');
+  document.getElementById('upload-placeholder').style.display = '';
+}
+
+/* Drag & drop */
+const uploadArea = document.getElementById('upload-area');
+if(uploadArea){
+  uploadArea.addEventListener('dragover', e=>{ e.preventDefault(); uploadArea.classList.add('dragover'); });
+  uploadArea.addEventListener('dragleave', ()=> uploadArea.classList.remove('dragover'));
+  uploadArea.addEventListener('drop', e=>{
+    e.preventDefault(); uploadArea.classList.remove('dragover');
+    const file = e.dataTransfer.files[0];
+    if(file && file.type.startsWith('image/')){
+      const inp = document.getElementById('f-screenshot');
+      const dt = new DataTransfer(); dt.items.add(file); inp.files = dt.files;
+      handleFile(inp);
+    }
+  });
+}
+
+/* ── FORM: VALIDATION HELPERS ── */
+function showErr(id, show){
+  const el = document.getElementById(id);
+  if(el) el.classList.toggle('show', show);
+}
+function markInput(id, error){
+  const el = document.getElementById(id);
+  if(el) el.classList.toggle('error', error);
+}
+function val(id){ return (document.getElementById(id)||{}).value?.trim() || ''; }
+
+/* ── FORM: SUBMIT ── */
+function submitForm(){
+  let valid = true;
+
+  const name = val('f-name');
+  showErr('err-name', !name); markInput('f-name', !name);
+  if(!name) valid = false;
+
+  const phone = val('f-phone');
+  const phoneOk = /^(\+?880|0)?1[3-9]\d{8}$/.test(phone.replace(/[-\s]/g,''));
+  showErr('err-phone', !phoneOk); markInput('f-phone', !phoneOk);
+  if(!phoneOk) valid = false;
+
+  const method = val('f-method');
+  showErr('err-method', !method); markInput('f-method', !method);
+  if(!method) valid = false;
+
+  const paynum = val('f-paynum');
+  const paynumOk = /^(\+?880|0)?1[3-9]\d{8}$/.test(paynum.replace(/[-\s]/g,''));
+  showErr('err-paynum', !paynumOk); markInput('f-paynum', !paynumOk);
+  if(!paynumOk) valid = false;
+
+  const trx = val('f-trx');
+  showErr('err-trx', !trx); markInput('f-trx', !trx);
+  if(!trx) valid = false;
+
+  const amount = val('f-amount');
+  const amountOk = amount && parseFloat(amount) > 0;
+  showErr('err-amount', !amountOk); markInput('f-amount', !amountOk);
+  if(!amountOk) valid = false;
+
+  const screenshot = document.getElementById('f-screenshot');
+  const hasFile = screenshot && screenshot.files && screenshot.files.length > 0;
+  showErr('err-file', !hasFile);
+  if(!hasFile) valid = false;
+
+  if(!valid){
+    // Scroll to first error
+    const firstErr = document.querySelector('.form-input.error, .field-error.show');
+    if(firstErr) firstErr.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  // Show loading
+  const btn = document.getElementById('submit-btn');
+  btn.classList.add('loading');
+  btn.innerHTML = '<div class="spinner"></div><span style="position:relative;z-index:1"><span class="bn">জমা হচ্ছে...</span><span class="en">Submitting...</span></span>';
+
+  // Submit to Formspree
+  const formData = new FormData();
+  formData.append('fullName', name);
+  formData.append('phone', val('f-phone'));
+  formData.append('paymentMethod', val('f-method'));
+  formData.append('paymentNumber', val('f-paynum'));
+  formData.append('trxId', trx);
+  formData.append('amount', val('f-amount'));
+  const screenshotFile = document.getElementById('f-screenshot').files[0];
+  if(screenshotFile) formData.append('screenshot', screenshotFile);
+
+  fetch('https://formspree.io/f/xreygplq', {
+    method: 'POST',
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(res => {
+    if(res.ok){
+      document.getElementById('form-fields').style.display = 'none';
+      const overlay = document.getElementById('success-overlay');
+      overlay.classList.add('show');
+      document.getElementById('success-trxid-display').textContent = '🔖 TrxID: ' + trx.toUpperCase();
+      overlay.scrollIntoView({behavior:'smooth', block:'center'});
+    } else {
+      res.json().then(data => {
+        btn.classList.remove('loading');
+        btn.innerHTML = '<span class="btn-icon">🕌</span><span><span class="bn">রেজিস্ট্রেশন জমা দিন</span><span class="en">Submit Registration</span></span>';
+        alert('Submission failed. Please try again.');
+      });
+    }
+  })
+  .catch(() => {
+    btn.classList.remove('loading');
+    btn.innerHTML = '<span class="btn-icon">🕌</span><span><span class="bn">রেজিস্ট্রেশন জমা দিন</span><span class="en">Submit Registration</span></span>';
+    alert('Network error. Please check your connection and try again.');
+  });
+}
+
+/* ── FORM: RESET ── */
+function resetForm(){
+  ['f-name','f-phone','f-method','f-paynum','f-trx','f-amount'].forEach(id=>{
+    const el = document.getElementById(id); if(el) el.value='';
+    markInput(id, false);
+  });
+  ['err-name','err-phone','err-method','err-paynum','err-trx','err-amount','err-file'].forEach(id=>showErr(id,false));
+  removeFile();
+  document.getElementById('success-overlay').classList.remove('show');
+  document.getElementById('form-fields').style.display = '';
+  const btn = document.getElementById('submit-btn');
+  btn.classList.remove('loading');
+  btn.innerHTML = '<span class="btn-icon">🕌</span><span><span class="bn">রেজিস্ট্রেশন জমা দিন</span><span class="en">Submit Registration</span></span>';
+}
+
+/* ── PLACEHOLDER LANG SWITCH ── */
+function updatePlaceholders(){
+  const isEn = document.body.classList.contains('lang-en');
+  const nameField = document.getElementById('f-name');
+  if(nameField) nameField.placeholder = isEn ? 'Enter your full name' : 'আপনার পূর্ণ নাম লিখুন';
+}
+const origSetLang = setLang;
+// Patch setLang to also update placeholders
+const _setLang = setLang;
+window.setLang = function(lang){
+  _setLang(lang);
+  updatePlaceholders();
+};</script>
+</body>
+</html>
